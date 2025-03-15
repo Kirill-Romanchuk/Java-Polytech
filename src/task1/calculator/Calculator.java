@@ -18,4 +18,10 @@ public class Calculator {
     public void multiply(double value) {
         result *= value;
     }
+
+    public void divide(double value) {
+        if (value == 0) {
+            throw new ArithmeticException("by zero");
+        }
+    }
 }
