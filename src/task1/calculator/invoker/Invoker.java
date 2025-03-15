@@ -1,6 +1,6 @@
 package task1.calculator.invoker;
 
-import task1.commands.Command;
+import task1.calculator.commands.Command;
 
 import java.util.Stack;
 

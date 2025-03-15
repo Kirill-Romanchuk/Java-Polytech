@@ -1,4 +1,4 @@
-package task1.commands;
+package task1.calculator.commands;
 
 import task1.calculator.Calculator;
 

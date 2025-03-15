@@ -1,18 +1,18 @@
-package task1.commands;
+package task1.calculator.commands;
 
 import task1.calculator.Calculator;
 
-public class MultiplyCommand implements Command {
+public class SubtractCommand implements Command {
     private final Calculator calculator;
     private final double operand;
 
-    public MultiplyCommand(Calculator calculator, double operand) {
+    public SubtractCommand(Calculator calculator, double operand) {
         this.calculator = calculator;
         this.operand = operand;
     }
 
     @Override
     public void execute() {
-        calculator.multiply(operand);
+        calculator.subtract(operand);
     }
 }
