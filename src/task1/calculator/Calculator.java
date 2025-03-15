@@ -10,4 +10,8 @@ public class Calculator {
     public void add(double value) {
         result += value;
     }
+
+    public void subtract(double value) {
+        result -= value;
+    }
 }
