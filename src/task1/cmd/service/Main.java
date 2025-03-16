@@ -1,10 +1,8 @@
 package task1.cmd.service;
 
 import task1.calculator.Calculator;
-import task1.calculator.invoker.CommandInvoker;
-import task1.calculator.parser.ExpressionParser;
 
-import java.util.Stack;
+import task1.calculator.parser.ExpressionParser;
 
 public class Main {
     public static void main(String[] args) {

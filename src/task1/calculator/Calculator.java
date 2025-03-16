@@ -25,8 +25,8 @@ public class Calculator {
     public double Calculate() {
         String[] tokens = postfixExpression.split("\\s+");
         CommandInvoker invoker = new CommandInvoker();
-        Stack<Double> operands = new Stack<Double>();
-        Stack<String> operations = new Stack<String>();
+        Stack<Double> operands = new Stack<>();
+        Stack<String> operations = new Stack<>();
         for (String token : tokens) {
             if (Character.isDigit(token.charAt(0))) {
                 double operand = Double.parseDouble(token);
