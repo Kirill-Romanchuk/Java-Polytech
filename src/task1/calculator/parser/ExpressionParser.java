@@ -6,12 +6,13 @@ public class ExpressionParser {
     public String infixToPostfix(String infix) {
         StringBuilder postfix = new StringBuilder();
         Stack<Character> stack = new Stack<>();
+        String[] tokens = infix.split(" ");
 
-        for (char c : infix.toCharArray()) {
+        for (String token : tokens) {
+            char c = token.charAt(0);
             if (Character.isDigit(c)) {
-                postfix.append(c);
+                postfix.append(token).append(' ');
             } else {
-                postfix.append(' ');
                 if (c == '(') {
                     stack.push(c);
                 } else if (c == ')') {
@@ -27,6 +28,9 @@ public class ExpressionParser {
                 }
             }
         }
+        while (!stack.isEmpty()) {
+            postfix.append(stack.pop()).append(' ');
+        }
         return postfix.toString().trim();
     }
 
@@ -38,3 +42,4 @@ public class ExpressionParser {
         };
     }
 }
+
