@@ -1,7 +1,7 @@
 package task1.calculator;
 
 import task1.calculator.commands.*;
-import task1.calculator.invoker.Invoker;
+import task1.calculator.invoker.CommandInvoker;
 import task1.calculator.parser.ExpressionParser;
 
 import java.util.Stack;
@@ -25,7 +25,7 @@ public class Calculator {
 
         String[] tokens = postfixExpression.split("\\s+");
         Stack<Double> operandStack = new Stack<>();
-        Invoker invoker = new Invoker();
+        CommandInvoker invoker = new CommandInvoker();
 
         for (String token : tokens) {
             if (Character.isDigit(token.charAt(0))) {
