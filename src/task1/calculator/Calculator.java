@@ -53,6 +53,7 @@ public class Calculator {
             }
         }
 
+        result = operandStack.pop();
         invoker.applyCommands();
 
     }
@@ -73,5 +74,10 @@ public class Calculator {
         if (value == 0) {
             throw new ArithmeticException("by zero");
         }
+        result /= value;
+    }
+
+    public double getResult() {
+        return result;
     }
 }
