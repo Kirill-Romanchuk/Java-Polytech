@@ -9,34 +9,40 @@ import java.util.Stack;
 public class Calculator {
     private double result;
     private String infixExpression;
+    private String postfixExpression;
 
     public Calculator() {}
 
-    public Calculator(String infixExpression) {setExpression(infixExpression);}
+    public Calculator(String infixExpression) {setInfixExpression(infixExpression);}
 
-    public void setExpression(String infixExpression) { // TODO: What if the expression is wrong and don't worry?
+    public void setInfixExpression(String infixExpression) { // TODO: What if the expression is wrong and don't worry?
         result = 0.0f;
         this.infixExpression = infixExpression;
+        ExpressionParser parser = new ExpressionParser();
+        postfixExpression = parser.infixToPostfix(infixExpression);
     }
 
-    public void Calculate() {
-        ExpressionParser parser = new ExpressionParser();
-        String postfixExpression = parser.infixToPostfix(infixExpression);
-
+    public double Calculate() {
         String[] tokens = postfixExpression.split("\\s+");
-        Stack<Double> operandStack = new Stack<>();
         CommandInvoker invoker = new CommandInvoker();
-
+        Stack<Double> operands = new Stack<Double>();
+        Stack<String> operations = new Stack<String>();
         for (String token : tokens) {
             if (Character.isDigit(token.charAt(0))) {
                 double operand = Double.parseDouble(token);
-                operandStack.push(operand);
-                continue;
+                operands.push(operand);
             }
+            else {
+                operations.push(token);
+            }
+        }
 
-            double operand = operandStack.pop();
+        result = operands.pop();
 
-            switch (token) {
+        for (String operation : operations) {
+            double operand = operands.pop();
+
+            switch (operation) {
                 case "+":
                     invoker.putCommand(new AddCommand(this, operand));
                     break;
@@ -52,10 +58,9 @@ public class Calculator {
                 // Добавьте другие операции, если нужно
             }
         }
-
-        result = operandStack.pop();
         invoker.applyCommands();
 
+        return result;
     }
 
     public void add(double value) {
@@ -79,5 +84,13 @@ public class Calculator {
 
     public double getResult() {
         return result;
+    }
+
+    public String getExpression() {
+        return infixExpression;
+    }
+
+    public String getPostfixExpression() {
+        return postfixExpression;
     }
 }
