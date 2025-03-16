@@ -1,5 +1,6 @@
 package task1.cmd.service;
 
+import task1.ConsoleCalculator.ConsoleCalculator;
 import task1.calculator.Calculator;
 
 import task1.calculator.parser.ExpressionParser;
@@ -12,5 +13,7 @@ public class Main {
         Calculator calculator = new Calculator();
         calculator.setInfixExpression(expression);
         System.out.println(calculator.Calculate());
+        ConsoleCalculator consoleCalculator = new ConsoleCalculator();
+        consoleCalculator.start();
     }
 }
