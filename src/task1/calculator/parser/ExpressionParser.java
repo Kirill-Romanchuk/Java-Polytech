@@ -21,7 +21,7 @@ public class ExpressionParser {
                     }
                     stack.pop();
                 } else {
-                    while (!stack.isEmpty() && precedence(c) <= precedence(stack.peek())) {
+                    while (!stack.isEmpty() && OperatorPrecedence.precedence(c) <= OperatorPrecedence.precedence(stack.peek())) {
                         postfix.append(stack.pop()).append(' ');
                     }
                     stack.push(c);
@@ -32,14 +32,6 @@ public class ExpressionParser {
             postfix.append(stack.pop()).append(' ');
         }
         return postfix.toString().trim();
-    }
-
-    private int precedence(char operator) {
-        return switch (operator) {
-            case '+', '-' -> 1;
-            case '*', '/' -> 2;
-            default -> -1;
-        };
     }
 }
 
